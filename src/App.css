@@ -1,68 +1,123 @@
-body{
-  background: linear-gradient(
-    90deg,
-    rgb(79, 102, 235) 0%,
-    rgb(107, 8, 138) 100%
-  );
-}
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  width: 500px;
-  min-height: 500px;
-  background: linear-gradient(
-    190deg,
-    rgb(204, 194, 106) 0%,
-    rgba(61, 131, 189, 0.979)100%
-  );
-  
-  margin: 128px auto;
-  border-radius: 10px;
-  padding-bottom: 32px;
-}
-
-#todo input{
-  background: linear-gradient(
-    90deg,
-    rgb(97, 12, 255) 0%,
-    rgba(155, 0, 250, 1) 100%
-  );
-  border: 0; 
-  color: #fff;
-  width: 300px;
-  height: 50px;
-  margin: 20px;
-  padding: 0 20px;
-  font-size: 18px;
-  border-radius: 10px;
-}
-#todo input::placeholder{
-  color: rgba(255,255,255,0.5);
-}
-#todo input:focus,button:focus{
-  outline: none;
-}
-#todo button{
-  height: 50px;
-  width: 80px;
-  border-radius: 5px;
-  border: 0;
-  background: linear-gradient(
-      90deg,
-      rgb(117, 12, 255) 0%,
-      rgb(250, 121, 0) 100%
-    );
-  cursor: pointer;
-}
-.pop{
-  position:absolute;
-    right:590px;
-    background: linear-gradient(
-    90deg,
-    rgba(93, 12, 255, 1) 0%,
-    rgba(155, 0, 250, 1) 100%
-  );
-    cursor: pointer;
-    padding: 15px 20px;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
   }
+  
+  body {
+    background: linear-gradient(
+      190deg,
+      rgba(83, 20, 75, 0.979) 0%,
+      rgb(34, 0, 28) 100%
+    );
+  }
+  .App {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 600px;
+    min-height: 550px;
+    background: linear-gradient(
+      190deg,
+      rgba(121, 179, 88, 0.829) 0%,
+      rgb(134, 143, 229) 100%
+    );
+    text-align: center;
+    margin: 128px auto;
+    border-radius: 10px;
+    padding-bottom: 32px;
+  }
+  .add-input {
+    padding: 14px 32px 14px 16px;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid #5d0cff;
+    outline: none;
+    width: 320px;
+    background: transparent;
+    color: #fff;
+  }
+  .add-input::placeholder {
+    color: #dbcccc;
+  }
+  .add-button {
+    padding: 16px;
+    border:thick white;
+    border-radius: 0 4px 4px 0 ;
+    cursor: pointer;
+    outline: none;
+    background: linear-gradient(
+      120deg,
+      rgb(8, 99, 173) 0%,
+      rgb(154, 24, 187) 100%
+    );
+    color: #fff;
+    text-transform: capitalize;
+  }
+  .icons {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .delete-icon {
+    margin-right: 5px;
+    color: #fff;
+    
+  }
+  .edit-icon {
+    color: #fff;
+  }
+  .todo-input.edit {
+    border: 2px solid #149fff;
+  }
+  .todo-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px auto;
+    color: #fff;
+    background: linear-gradient(
+      90deg,
+      rgb(87, 216, 13) 0%,
+      rgba(255, 84, 17, 1) 100%
+    );
+  
+    padding: 16px;
+    border-radius: 5px;
+    width: 90%;
+  }
+  .todo-row:nth-child(4n + 1) {
+    background: linear-gradient(
+      90deg,
+      rgb(12, 138, 255) 0%,
+      rgba(155, 0, 250, 1) 100%
+    );
+  }
+  
+  .todo-row:nth-child(4n + 2) {
+    background: linear-gradient(
+      90deg,
+      rgb(52, 21, 206) 0%,
+      rgba(250, 0, 135, 1) 100%
+    );
+  }
+  
+  .todo-row:nth-child(4n + 3) {
+    background: linear-gradient(
+      90deg,
+      rgb(198, 218, 20) 0%,
+      rgba(78, 73, 73, 0.849) 100%
+    );
+  }
+  .update {
+    background: linear-gradient(
+      90deg,
+      rgb(16, 115, 185) 0%,
+      rgb(233, 60, 60) 100%
+    );
+    padding: 10px 20px;
+    cursor:pointer
+  }
+

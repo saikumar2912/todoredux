@@ -1,13 +1,11 @@
 import React,{useState} from 'react';
 import Popover from '@material-ui/core/Popover';
-import { RiEdit2Fill } from 'react-icons/ri'
-import './View.css'
 import {connect} from 'react-redux';
 
  function SimplePopover(props) {
   
   const [anchorEl, setAnchorEl] = React.useState(null);
- const [Update,setUpdate]=useState({id:props.id,name:props.name});
+ const [Update,setUpdate]=useState("");
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -17,22 +15,24 @@ import {connect} from 'react-redux';
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const updateHandler =(text)=>{
+  const updateHandler =(id,text)=>{
     // console.log(text);
     const arrCopy = [...props.list]
     // console.log(arrCopy);
    arrCopy.forEach((e)=>{
-     if(e.id === text.id){
-       e.name =text.name
+     if(e.id === id){
+       e.name =text
      }
    })
    props.onUpdateTodo(arrCopy)
        }
+       const {location:{state}}=props;
+
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 const hello =( <div>
         
-         <RiEdit2Fill className="pop" aria-describedby={id} variant="contained" color="primary" onClick={handleClick}/>
+         <button className="update" aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>UPDATE </button>
         
 
       <Popover
@@ -49,8 +49,9 @@ const hello =( <div>
           horizontal: 'center',
         }}
       >
-        <input className='input' type="text" onChange={(e)=> setUpdate({id:props.id,name:e.target.value})}></input>
-        <button  classsName='update' onClick={()=>{updateHandler(Update)}}> update </button>
+        <input type="text" onChange={(e)=> setUpdate(e.target.value)}></input>
+        <button   onClick={()=>{updateHandler(state,Update);
+          props.history.goBack()}}> update </button>
       </Popover>
 </div>);
   return (

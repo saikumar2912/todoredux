@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import './View.css'
 import {connect} from 'react-redux';
-
-
- class Forms extends Component {
+import Delete from './Delete';
+ 
+ class Add extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -11,23 +10,23 @@ import {connect} from 'react-redux';
         };
     }
     render() {
-        const {items}=this.state;
-        
+        const {items}=this.state; 
+        console.log(this.props);
         return (
         
-            <div className='' id='todo'>
-                <h1> <center> TODO LIST</center></h1>
+            <div>
                 
-                <input type="text"placeholder="Enter text"
+                
+                <input className="add-input" type="text" placeholder="Enter text"
                 onChange={(e) => this.setState({items:e.target.value})}
                 
                 value={items}
                 />
-                <button type="submit" 
+                <button className="add-button" type="submit" 
                 onClick={()=>{this.props.onAddTodo(items);
                 this.setState({items:" "})
                 }}> Add</button>    
-                 
+                 <Delete history={this.props.history}/>
                 </div>
         )
     }
@@ -44,4 +43,4 @@ const mapDispatchToProps=(dispatch)=>{
     }
   }
   
-  export default connect(null,mapDispatchToProps)(Forms);
+  export default connect(null,mapDispatchToProps)(Add);

@@ -4,7 +4,7 @@ const initialState={
 const reducer=(state=initialState,action)=>{
     if(action.type === 'ADD_TODO'){
           return{...state,
-            todo:[action.payload],
+            todo:[...state.todo,action.payload],
         }
     }
     else if(action.type === 'REMOVE_TODO'){

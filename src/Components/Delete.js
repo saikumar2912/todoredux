@@ -1,11 +1,9 @@
 import React, { Component } from 'react' 
-import { RiCloseCircleLine } from 'react-icons/ri';
-import SimplePopover from './Pop';
-import './View.css'
+import { RiCloseCircleLine,RiEdit2Fill } from 'react-icons/ri';
+
 import {connect} from 'react-redux';
 
-
- class Eventadd extends Component {
+ class Delete extends Component {
 
  deleteHandler =(text)=>{
     console.log(text);
@@ -18,13 +16,15 @@ import {connect} from 'react-redux';
   }
 
     render() {
+      console.log(this.props.history);
         const items =this.props.list.map((a)=>{
-            return (<div className='list' key={a.id}>
+            return (<div className='todo-row' key={a.id}>
                 {a.name}
                 <div className ="icons" >
-                <RiCloseCircleLine  className='button'
-                onClick={() => {this.deleteHandler(a.id)}} />
-                <SimplePopover id={a.id} name={a.name}/>
+
+                <RiCloseCircleLine  className='delete-icon'onClick={() => {this.deleteHandler(a.id)}} />
+
+                <RiEdit2Fill className="edit-icon" onClick={()=>this.props.history.push({pathname:"/edit",state:a.id})}/>
                 </div>
         </div>)
         })
@@ -51,4 +51,4 @@ const mapStateToProps=(state)=>{
         }),
     }
   }
-  export default connect(mapStateToProps,mapDispatchToProps)(Eventadd);
+  export default connect(mapStateToProps,mapDispatchToProps)(Delete);
